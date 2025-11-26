@@ -151,13 +151,13 @@ def isi_data_acak(data_form):
 data_form, url_submit = ambil_data_form(url_gform)
 
 if data_form and url_submit:
-    sisa = int(input())
-    target = int(input()) - sisa
+    tambah_data = int(input("Mau nambahin berapa orang?: "))
+    target = int(input("Target orangnya harusnya berapa?: ")) - tambah_data
     print("Berarti kurang " + str(target) + " lagi nih.")
     try:
-        jumlah = int(input("Mau ngisi berapa kali bos? (Saran: " + str(target) + "): "))
+        jumlah = int(input("Mau ngisi berapa orang? (Saran: " + str(target) + "): "))
     except:
-        print("Yah si bos malah masukin bukan angka. Yaudah aku isi 1 kali aja.")
+        print("Yah, bukan angka ya. Yaudah deh, masukin satu aja.")
         jumlah = 1
 
     print("Isi" + str(jumlah) + " kali!")
