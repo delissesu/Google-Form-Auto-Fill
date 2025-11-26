@@ -6,6 +6,7 @@ import datetime
 import kagglehub
 import os
 import glob
+import time
 
 # ini link gform nya
 url_gform = "https://docs.google.com/forms/d/e/1FAIpQLScyVWGpabtrQKANc58eqk_gOJLzDkMLTW3Vt5rtRyqk-LPE0w/viewform"
@@ -149,7 +150,7 @@ def isi_data_acak(data_form):
 # Ambil data form
 data_form, url_submit = ambil_data_form(url_gform)
 
-if data_form:
+if data_form and url_submit:
     sisa = int(input())
     target = int(input()) - sisa
     print("Berarti kurang " + str(target) + " lagi nih.")
@@ -181,6 +182,15 @@ if data_form:
                 
         except Exception as e:
             print("Ada error pas ngirim: " + str(e))
+        
+        # Delay acak 2-3 menit biar ga keliatan kayak bot
+        # Kecuali kalo udah yang terakhir, ga usah delay
+        if i < jumlah - 1:
+            delay_detik = random.randint(120, 180)  # 2-3 menit dalam detik
+            menit = delay_detik // 60
+            detik = delay_detik % 60
+            print(f"Nunggu dulu {menit} menit {detik} detik biar ga dicurigai...")
+            time.sleep(delay_detik)
             
     print("\nSelesai bos! Udah dikirim semua.")
 
